@@ -1,0 +1,119 @@
+  [1m[36m (199.8ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (177.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTags (20140506105807)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140506105807"]]
+  [1m[35m (176.7ms)[0m  commit transaction
+Migrating to CreateUsers (20140506105855)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140506105855"]]
+  [1m[35m (184.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-06 14:31:06 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.1.0/lib/rails/templates/rails/welcome/index.html.erb (2.1ms)
+Completed 200 OK in 29ms (Views: 7.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:31:14 +0300
+Processing by TagsController#index as JSON
+Completed 500 Internal Server Error in 4ms
+
+ArgumentError (too few arguments):
+  app/controllers/tags_controller.rb:8:in `format'
+  app/controllers/tags_controller.rb:8:in `index'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (21.0ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:33:22 +0300
+Processing by TagsController#index as JSON
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags"
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateJoinTableTagUser (20140506114023)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.8ms)[0m  [1mCREATE TABLE "tags_users" ("tag_id" integer NOT NULL, "user_id" integer NOT NULL) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140506114023"]]
+  [1m[36m (206.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (188.2ms)[0m  [1mDROP TABLE "tags"[0m
+  [1m[35m (178.2ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (188.7ms)[0m  [1mDROP TABLE "tags_users"[0m
+  [1m[35m (167.2ms)[0m  CREATE TABLE "tags_users" ("tag_id" integer NOT NULL, "user_id" integer NOT NULL) 
+  [1m[36m (190.8ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (178.4ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Liha"], ["created_at", "2014-05-06 11:48:35.430390"], ["updated_at", "2014-05-06 11:48:35.430390"]]
+  [1m[35m (167.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Kasvis"], ["created_at", "2014-05-06 11:48:35.602266"], ["updated_at", "2014-05-06 11:48:35.602266"]]
+  [1m[36m (164.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Kala"], ["created_at", "2014-05-06 11:48:35.770004"], ["updated_at", "2014-05-06 11:48:35.770004"]]
+  [1m[35m (177.4ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-06 14:49:02 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.1.0/lib/rails/templates/rails/welcome/index.html.erb (1.8ms)
+Completed 200 OK in 28ms (Views: 7.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:49:06 +0300
+Processing by TagsController#index as JSON
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags"
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:52:47 +0300
+Processing by TagsController#index as JSON
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+Completed 500 Internal Server Error in 11ms
+
+NoMethodError (undefined method `contents' for #<Tag::ActiveRecord_Relation:0x007f0b50f48618>):
+  app/controllers/tags_controller.rb:10:in `block (2 levels) in index'
+  app/controllers/tags_controller.rb:9:in `index'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.1ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:55:06 +0300
+Processing by TagsController#index as JSON
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags"
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:55:31 +0300
+Processing by TagsController#index as JSON
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-06 14:55:51 +0300
+Processing by TagsController#index as JSON
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags"
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 0.8ms)
