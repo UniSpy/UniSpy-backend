@@ -5,7 +5,7 @@ class MenusController < ApplicationController
   # GET /menus.json
   def index
   #returns static json currently
-   @@menus = File.read('/home/fleuri/UniSpy-backend/app/assets/menus.json');
+   @@menus = File.read('app/assets/menus.json');
     respond_to do |format|
       format.json do
         render :json => @@menus
