@@ -346,3 +346,8 @@ NoMethodError (undefined method `map' for #<String:0x007f0f79ca5140>):
 Started GET "/menus.json" for 127.0.0.1 at 2014-05-06 17:32:14 +0300
 Processing by MenusController#index as JSON
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/menus.json" for 127.0.0.1 at 2014-05-06 17:40:05 +0300
+Processing by MenusController#index as JSON
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.0ms)
