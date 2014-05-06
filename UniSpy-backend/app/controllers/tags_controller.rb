@@ -5,6 +5,12 @@ class TagsController < ApplicationController
   # GET /tags.json
   def index
     @tags = Tag.all
+
+    respond_to do |format|
+      format.json do
+      render :json => @tags.map { |tag| tag.as_json(:only => :content) }
+    end
+end
   end
 
   # GET /tags/1
