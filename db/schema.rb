@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140506114023) do
+ActiveRecord::Schema.define(version: 20140506142037) do
+
+  create_table "menus", force: true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "campus"
+    t.string   "open"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "tags", force: true do |t|
     t.string   "content"
