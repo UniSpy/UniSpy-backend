@@ -7,17 +7,20 @@ class MenusController < ApplicationController
   def index
   #returns static json currently
 =begin
-   @@menus = File.read('app/assets/menus.json');
-    respond_to do |format|
-      format.json do
-        render :json => @@menus
-      end
-    end
+returnStaticJson
 =end
-  @menus = JSON.parse(getMenus.body)
   respond_to do |format|
     format.json do
+      if !Menu.first.nil? && Menu.first.created_at.to_time < 24.hours.ago
+      @menus = JSON.parse(getMenus.body)
       render :json => @menus
+      else
+        @menus = Menu.all.as_json
+        render :json => @menus
+      end
+      end
+    format.html do
+      @menus = Menu.all
     end
   end
   end

@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  menu: 
+  menu_id: 
+  fi: 
   en: 
 
 two:
-  menu: 
+  menu_id: 
+  fi: 
   en: 
