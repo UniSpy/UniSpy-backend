@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  menu_id: 
+  lat: MyString
+  lng: MyString
+
+two:
+  menu_id: 
+  lat: MyString
+  lng: MyString

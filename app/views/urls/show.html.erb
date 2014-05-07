@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Menu:</strong>
+  <%= @url.menu %>
+</p>
+
+<p>
+  <strong>Fi:</strong>
+  <%= @url.fi %>
+</p>
+
+<p>
+  <strong>En:</strong>
+  <%= @url.en %>
+</p>
+
+<%= link_to 'Edit', edit_url_path(@url) %> |
+<%= link_to 'Back', urls_path %>

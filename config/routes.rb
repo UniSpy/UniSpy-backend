@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :meals
+
+  resources :locations
+
+  resources :urls
+
   resources :menus
 
   resources :users

@@ -1,5 +1,2 @@
-class Menu
-  include ActiveModel::Model
-
-  attr_accessor :name, :address, :campus, :open, :url
+class Menu < ActiveRecord::Base
 end
