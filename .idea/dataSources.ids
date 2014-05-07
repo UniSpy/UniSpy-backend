@@ -3,4 +3,7 @@
   <data-source source="LOCAL" name="Rails UniSpy-backend: development" uuid="decc9762-7e8e-430f-a406-5792f71c13b1">
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
+  <data-source source="LOCAL" name="Rails UniSpy-backend: test" uuid="a869aac1-7bc2-4ac1-a919-b8228784a234">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
+  </data-source>
 </component>

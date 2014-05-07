@@ -11,12 +11,12 @@ returnStaticJson
 =end
   respond_to do |format|
     format.json do
-      if !Menu.first.nil? && Menu.first.created_at.to_time < 24.hours.ago
+      if Menu.first.nil? || Menu.first.created_at.to_time < 24.hours.ago
       @menus = JSON.parse(getMenus.body)
       render :json => @menus
       else
-        @menus = Menu.all.as_json
-        render :json => @menus
+        @menus = Menu.all
+        render :json => @menus.as_json,  :include=> [:url, :location], :except=> [:id, :created_at, :updated_at]
       end
       end
     format.html do
