@@ -1,17 +1,26 @@
 class MenusController < ApplicationController
+  include MenusHelper
   before_action :set_menu, only: [:show, :edit, :update, :destroy]
 
   # GET /menus
   # GET /menus.json
   def index
   #returns static json currently
+=begin
    @@menus = File.read('app/assets/menus.json');
     respond_to do |format|
       format.json do
         render :json => @@menus
       end
     end
-   end
+=end
+  @menus = JSON.parse(getMenus.body)
+  respond_to do |format|
+    format.json do
+      render :json => @menus
+    end
+  end
+  end
 
   # GET /menus/1
   # GET /menus/1.json
