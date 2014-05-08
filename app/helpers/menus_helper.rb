@@ -2,7 +2,6 @@ module MenusHelper
 
 def getMenus
     Menu.destroy_all
-    ActiveRecord::Base.connection.reset_pk_sequence!('menu')
     @url = "http://www.lounasaika.net/api/v1/menus.json"
     @response = HTTParty.get(@url)
     @ret = @response.parsed_response
@@ -45,12 +44,8 @@ end
 
 def getMeals(item)
   @meal = Meal.new
-   if !item["meals"["fi"]].nil?
-     @meal.fi = item["meals"["fi"]]
-   end
-   if !item["meals"["en"]].nil?
-     @meal.en = item["meals"["en"]]
-   end
+     @meal.fi = item["meals"]["fi"] unless item["meals"].nil?
+     @meal.en = item["meals"]["en"] unless item["meals"].nil?
   if @meal.save
     @meal
   else
