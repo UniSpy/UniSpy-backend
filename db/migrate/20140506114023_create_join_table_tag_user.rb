@@ -5,4 +5,6 @@ class CreateJoinTableTagUser < ActiveRecord::Migration
       # t.index [:user_id, :tag_id]
     end
   end
+
+  add_index :tags_users, [:tag_id, :user_id]
 end

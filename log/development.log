@@ -17504,3 +17504,385 @@ Migrating to CreateSessions (20140508131819)
             FROM sqlite_temp_master
             WHERE name='index_urls_on_menu_id' AND type='index'
 [0m
+  [1m[36m (175.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (183.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTags (20140506105807)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  CREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140506105807"]]
+  [1m[35m (168.6ms)[0m  commit transaction
+Migrating to CreateUsers (20140506105855)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140506105855"]]
+  [1m[35m (172.8ms)[0m  commit transaction
+Migrating to CreateJoinTableTagUser (20140506114023)
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "tags_users" ("tag_id" integer NOT NULL, "user_id" integer NOT NULL) 
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140506114023"]]
+  [1m[35m (171.8ms)[0m  commit transaction
+Migrating to CreateMenus (20140506142037)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "menus" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "campus" varchar(255), "open" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140506142037"]]
+  [1m[35m (161.6ms)[0m  commit transaction
+Migrating to CreateUrls (20140507103347)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  CREATE TABLE "urls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "fi" varchar(255), "en" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_urls_on_menu_id" ON "urls" ("menu_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140507103347"]]
+  [1m[36m (186.1ms)[0m  [1mcommit transaction[0m
+Migrating to CreateLocations (20140507103512)
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36m (0.6ms)[0m  [1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "lat" varchar(255), "lng" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.3ms)[0m  CREATE  INDEX "index_locations_on_menu_id" ON "locations" ("menu_id")
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140507103512"]]
+  [1m[35m (207.4ms)[0m  commit transaction
+Migrating to CreateMeals (20140507112451)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  CREATE TABLE "meals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "fi" text, "en" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_meals_on_menu_id" ON "meals" ("menu_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140507112451"]]
+  [1m[36m (206.7ms)[0m  [1mcommit transaction[0m
+Migrating to RenameColumnInUser (20140508131626)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.4ms)[0m  [1mCREATE TEMPORARY TABLE "ausers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password_digest" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.1ms)[0m  SELECT * FROM "users"
+  [1m[36m (0.2ms)[0m  [1mDROP TABLE "users"[0m
+  [1m[35m (0.2ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password_digest" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.1ms)[0m  [1mSELECT * FROM "ausers"[0m
+  [1m[35m (0.2ms)[0m  DROP TABLE "ausers"
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20140508131626"]]
+  [1m[35m (193.7ms)[0m  commit transaction
+Migrating to CreateSessions (20140508131819)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  CREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "token" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_sessions_on_user_id" ON "sessions" ("user_id")[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20140508131819"]]
+  [1m[36m (173.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.4ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-05-08 15:55:46.103989"], ["email", "laur1.suomalainen@gmail.com"], ["name", "Fleuri"], ["password_digest", "Moikka"], ["updated_at", "2014-05-08 15:55:46.103989"]]
+  [1m[35m (189.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", "2014-05-08 15:56:21.444134"], ["name", "Lauri"], ["updated_at", "2014-05-08 15:56:21.444134"]]
+  [1m[36m (196.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mDELETE FROM "users" WHERE "users"."id" = ?[0m  [["id", 2]]
+  [1m[35m (175.0ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+
+  [1m[36m (190.9ms)[0m  [1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "lat" varchar(255), "lng" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (157.7ms)[0m  [1mCREATE  INDEX "index_locations_on_menu_id" ON "locations" ("menu_id")[0m
+  [1m[35m (177.3ms)[0m  CREATE TABLE "meals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "fi" text, "en" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (177.8ms)[0m  [1mCREATE  INDEX "index_meals_on_menu_id" ON "meals" ("menu_id")[0m
+  [1m[35m (188.8ms)[0m  CREATE TABLE "menus" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "campus" varchar(255), "open" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (168.4ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (177.9ms)[0m  CREATE  INDEX "index_sessions_on_user_id" ON "sessions" ("user_id")
+  [1m[36m (178.1ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (211.0ms)[0m  CREATE TABLE "tags_users" ("tag_id" integer NOT NULL, "user_id" integer NOT NULL) 
+  [1m[36m (210.5ms)[0m  [1mCREATE TABLE "urls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "fi" varchar(255), "en" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (211.4ms)[0m  CREATE  INDEX "index_urls_on_menu_id" ON "urls" ("menu_id")
+  [1m[36m (221.5ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password_digest" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (213.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (200.6ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (188.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140508131819')[0m
+  [1m[35m (200.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140506105855')
+  [1m[36m (213.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140508131626')[0m
+  [1m[35m (211.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140507112451')
+  [1m[36m (211.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140506114023')[0m
+  [1m[35m (212.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140506142037')
+  [1m[36m (212.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140507103347')[0m
+  [1m[35m (189.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140506105807')
+  [1m[36m (211.9ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140507103512')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)  [["created_at", "2014-05-08 16:00:31.408176"], ["email", "laur1.suomalainen@gmail.com"], ["name", "Fleuri"], ["password_digest", "Moikka"], ["updated_at", "2014-05-08 16:00:31.408176"]]
+  [1m[36m (214.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Liha"], ["created_at", "2014-05-08 16:00:31.656066"], ["updated_at", "2014-05-08 16:00:31.656066"]]
+  [1m[35m (147.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-05-08 16:14:24.628236"], ["email", "laur1.suomalainen@gmail.com"], ["name", "Fleuri"], ["password_digest", "Moikka"], ["updated_at", "2014-05-08 16:14:24.628236"]]
+  [1m[35m (194.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Liha"], ["created_at", "2014-05-08 16:14:24.884151"], ["updated_at", "2014-05-08 16:14:24.884151"]]
+  [1m[36m (153.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 2], ["user_id", 2]]
+  [1m[35m (183.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Kasvis"], ["created_at", "2014-05-08 16:14:25.241379"], ["updated_at", "2014-05-08 16:14:25.241379"]]
+  [1m[36m (152.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 3], ["user_id", 2]]
+  [1m[35m (206.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Kala"], ["created_at", "2014-05-08 16:14:25.610432"], ["updated_at", "2014-05-08 16:14:25.610432"]]
+  [1m[36m (174.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 4], ["user_id", 2]]
+  [1m[35m (194.9ms)[0m  commit transaction
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-08 19:14:38 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.1.0/lib/rails/templates/rails/welcome/index.html.erb (2.2ms)
+Completed 200 OK in 132ms (Views: 72.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-08 19:14:44 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 15ms
+
+ArgumentError (too few arguments):
+  app/controllers/users_controller.rb:13:in `format'
+  app/controllers/users_controller.rb:13:in `show'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.2ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (190.5ms)
+
+
+Started GET "/users/1.json" for 127.0.0.1 at 2014-05-08 19:14:49 +0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+Completed 500 Internal Server Error in 3ms
+
+ArgumentError (too few arguments):
+  app/controllers/users_controller.rb:13:in `format'
+  app/controllers/users_controller.rb:13:in `show'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.8ms)
+
+
+Started GET "/users/1.json" for 127.0.0.1 at 2014-05-08 19:16:16 +0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", "id"]]
+Completed 404 Not Found in 14ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=id):
+  app/controllers/users_controller.rb:13:in `show'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (19.1ms)
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "tags_users" ON "tags"."id" = "tags_users"."tag_id" WHERE "tags_users"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT  "tags".* FROM "tags" INNER JOIN "tags_users" ON "tags"."id" = "tags_users"."tag_id" WHERE "tags_users"."user_id" = ?  ORDER BY "tags"."id" ASC LIMIT 1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "tags_users" ON "tags"."id" = "tags_users"."tag_id" WHERE "tags_users"."user_id" = ?  [["user_id", 1]]
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-05-08 16:26:48.931763"], ["email", "laur1.suomalainen@gmail.com"], ["name", "Fleuri"], ["password_digest", "Moikka"], ["updated_at", "2014-05-08 16:26:48.931763"]]
+  [1m[35m (194.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Liha"], ["created_at", "2014-05-08 16:26:49.163217"], ["updated_at", "2014-05-08 16:26:49.163217"]]
+  [1m[36m (177.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 5], ["user_id", 3]]
+  [1m[35m (218.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Kasvis"], ["created_at", "2014-05-08 16:26:49.577158"], ["updated_at", "2014-05-08 16:26:49.577158"]]
+  [1m[36m (165.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 6], ["user_id", 3]]
+  [1m[35m (205.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Kala"], ["created_at", "2014-05-08 16:26:49.957259"], ["updated_at", "2014-05-08 16:26:49.957259"]]
+  [1m[36m (186.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 7], ["user_id", 3]]
+  [1m[35m (227.9ms)[0m  commit transaction

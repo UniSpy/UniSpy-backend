@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Tag.create(:content => "Liha")
-Tag.create(:content => "Kasvis")
-Tag.create(:content => "Kala")
+@user = User.create(:name => "Fleuri", :email => "laur1.suomalainen@gmail.com", :password_digest => "Moikka")
+@user.tags << Tag.create(:content => "Liha")
+@user.tags << Tag.create(:content => "Kasvis")
+@user.tags << Tag.create(:content => "Kala")
+
