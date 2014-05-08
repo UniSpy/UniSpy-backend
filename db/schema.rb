@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507112451) do
+ActiveRecord::Schema.define(version: 20140508131819) do
 
   create_table "locations", force: true do |t|
     t.integer  "menu_id"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20140507112451) do
     t.datetime "updated_at"
   end
 
+  create_table "sessions", force: true do |t|
+    t.integer  "user_id"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["user_id"], name: "index_sessions_on_user_id"
+
   create_table "tags", force: true do |t|
     t.string   "content"
     t.datetime "created_at"
@@ -65,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140507112451) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.string   "password"
+    t.string   "password_digest"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
