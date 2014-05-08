@@ -1,5 +1,5 @@
 json.(@menus)  do |menu|
-  if !menu.meal.fi.nil?
+  if !menu.meal.fi.empty?
   json.name menu.name
   json.address menu.address
   json.campus menu.campus
