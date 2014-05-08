@@ -1,6 +1,8 @@
 module MenusHelper
 
 def getMenus
+    Menu.destroy_all
+    ActiveRecord::Base.connection.reset_pk_sequence!('menu')
     @url = "http://www.lounasaika.net/api/v1/menus.json"
     @response = HTTParty.get(@url)
     @ret = @response.parsed_response
@@ -12,7 +14,7 @@ def getMenus
       @menu.open = item["open"]
       @menu.location = getLocation(item)
       @menu.url = getUrl(item)
-      #@menu.meal = getMeals(item)
+      @menu.meal = getMeals(item)
       @menu.save
     end
     @response
@@ -43,8 +45,12 @@ end
 
 def getMeals(item)
   @meal = Meal.new
-  @meal.fi = item["meals"]["fi"]
-  @meal.en = item["meals"]["en"]
+   if !item["meals"["fi"]].nil?
+     @meal.fi = item["meals"["fi"]]
+   end
+   if !item["meals"["en"]].nil?
+     @meal.en = item["meals"["en"]]
+   end
   if @meal.save
     @meal
   else
@@ -55,4 +61,3 @@ end
 def returnStaticJson
   @@menus = File.read('app/assets/menus.json');
 end
-

@@ -16,7 +16,6 @@ returnStaticJson
       render :json => @menus
       else
         @menus = Menu.all
-        render :json => @menus.as_json,  :include=> [:url, :location], :except=> [:id, :created_at, :updated_at]
       end
       end
     format.html do

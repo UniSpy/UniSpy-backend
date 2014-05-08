@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :urls
 
-  resources :menus
+  resources :menus, only: [:index]
 
   resources :users
 
