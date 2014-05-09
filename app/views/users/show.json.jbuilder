@@ -1,3 +1,3 @@
-json(@user) do |user|
+ json.user (@user) do |user|
   json.tags user.tags
 end
