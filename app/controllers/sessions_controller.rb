@@ -49,4 +49,3 @@ end
       params.require(:session).permit(:token, :user_id)
     end
   end
-  end
