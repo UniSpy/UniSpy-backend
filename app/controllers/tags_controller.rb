@@ -8,7 +8,7 @@ class TagsController < ApplicationController
 
     respond_to do |format|
       format.json do
-      render :json => @tags.map { |tag| tag.as_json(:only => :content) }
+      @tags
     end
 end
   end
