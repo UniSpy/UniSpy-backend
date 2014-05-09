@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
   # POST /sessions.json
   def create
 
-    user = User.find_by user:params[:name]
-    auth = user.authenticate(params[:password_digest]) if user
+    user = User.find_by name:params[:user]
+    auth = user.authenticate(params[:password]) if user
 
     @session = Session.new(user:user)
 
