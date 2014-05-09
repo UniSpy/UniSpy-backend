@@ -23068,3 +23068,293 @@ Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-09 16:10:58 +0300
 
 
 Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-09 16:10:58 +0300
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-09 16:23:17 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 406 Not Acceptable in 9ms
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/users_controller.rb:14:in `show'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.0ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.7ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2014-05-09 16:23:18 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", "1"]]
+Completed 406 Not Acceptable in 3ms
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/users_controller.rb:14:in `show'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (18.5ms)
+
+
+Started GET "/users" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 19ms (Views: 17.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/meals.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/menus.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/urls.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/locations.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/meals.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/menus.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/urls.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-09 16:23:27 +0300
+
+
+Started GET "/users/new" for 127.0.0.1 at 2014-05-09 16:23:30 +0300
+Processing by UsersController#new as HTML
+  Rendered users/_form.html.erb (5.6ms)
+  Rendered users/new.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2014-05-09 16:23:54 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dvrMAYSbv4yDGfLjKrq09HrW42yzLghQ3aY0NiJ2Sb0=", "user"=>{"name"=>"Vaakapollo", "password_digest"=>"[FILTERED]", "email"=>"pollos@hermanos.net"}, "commit"=>"Create User"}
+Unpermitted parameters: password_digest
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "updated_at") VALUES (?, ?, ?, ?)[0m  [["created_at", "2014-05-09 13:23:54.741339"], ["email", "pollos@hermanos.net"], ["name", "Vaakapollo"], ["updated_at", "2014-05-09 13:23:54.741339"]]
+  [1m[35m (282.2ms)[0m  commit transaction
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 289ms (ActiveRecord: 282.7ms)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2014-05-09 16:23:55 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 3]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", "3"]]
+Completed 406 Not Acceptable in 3ms
+
+ActionController::UnknownFormat (ActionController::UnknownFormat):
+  app/controllers/users_controller.rb:14:in `show'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.9ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.9ms)
+
+
+Started GET "/users/" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  Rendered users/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/assets/locations.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/scaffolds.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/menus.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/tags.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/meals.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/urls.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/locations.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/meals.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/menus.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/tags.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/urls.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-05-09 16:24:02 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_locations_on_menu_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_meals_on_menu_id' AND type='index'
+
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sessions_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_urls_on_menu_id' AND type='index'
+
+  [1m[36m (165.1ms)[0m  [1mCREATE TABLE "locations" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "lat" varchar(255), "lng" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (169.7ms)[0m  [1mCREATE  INDEX "index_locations_on_menu_id" ON "locations" ("menu_id")[0m
+  [1m[35m (177.3ms)[0m  CREATE TABLE "meals" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "fi" text, "en" text, "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (177.7ms)[0m  [1mCREATE  INDEX "index_meals_on_menu_id" ON "meals" ("menu_id")[0m
+  [1m[35m (165.9ms)[0m  CREATE TABLE "menus" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "address" varchar(255), "campus" varchar(255), "open" varchar(255), "created_at" datetime, "updated_at" datetime) 
+  [1m[36m (167.8ms)[0m  [1mCREATE TABLE "sessions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "token" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (155.8ms)[0m  CREATE  INDEX "index_sessions_on_user_id" ON "sessions" ("user_id")
+  [1m[36m (155.1ms)[0m  [1mCREATE TABLE "tags" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "content" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (155.3ms)[0m  CREATE TABLE "tags_users" ("tag_id" integer NOT NULL, "user_id" integer NOT NULL) 
+  [1m[36m (166.0ms)[0m  [1mCREATE TABLE "urls" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "menu_id" integer, "fi" varchar(255), "en" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (166.6ms)[0m  CREATE  INDEX "index_urls_on_menu_id" ON "urls" ("menu_id")
+  [1m[36m (177.2ms)[0m  [1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "password_digest" varchar(255), "email" varchar(255), "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (178.7ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (177.9ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.3ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (177.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140508131819')[0m
+  [1m[35m (167.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140506105855')
+  [1m[36m (145.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140507112451')[0m
+  [1m[35m (146.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140506114023')
+  [1m[36m (167.5ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140506142037')[0m
+  [1m[35m (145.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140507103347')
+  [1m[36m (156.1ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140506105807')[0m
+  [1m[35m (156.2ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140507103512')
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+Binary data inserted for `string` type on column `password_digest`
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["created_at", "2014-05-09 14:08:09.549351"], ["email", "laur1.suomalainen@gmail.com"], ["name", "Fleuri"], ["password_digest", "$2a$10$rIdRj/IoJpaKJ.XVNu0X0u.RwxEf3oGcqDj4lduC2c1zwo.kdTibC"], ["updated_at", "2014-05-09 14:08:09.549351"]]
+  [1m[35m (186.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.3ms)[0m  SELECT  1 AS one FROM "tags"  WHERE "tags"."content" = 'Liha' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Liha"], ["created_at", "2014-05-09 14:08:09.778267"], ["updated_at", "2014-05-09 14:08:09.778267"]]
+  [1m[35m (228.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)  [["tag_id", 1], ["user_id", 1]]
+  [1m[36m (172.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mTag Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "tags"  WHERE "tags"."content" = 'Kasvis' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)  [["content", "Kasvis"], ["created_at", "2014-05-09 14:08:10.202502"], ["updated_at", "2014-05-09 14:08:10.202502"]]
+  [1m[36m (172.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)[0m  [["tag_id", 2], ["user_id", 1]]
+  [1m[35m (160.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mTag Exists (0.3ms)[0m  SELECT  1 AS one FROM "tags"  WHERE "tags"."content" = 'Kala' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "tags" ("content", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["content", "Kala"], ["created_at", "2014-05-09 14:08:10.547615"], ["updated_at", "2014-05-09 14:08:10.547615"]]
+  [1m[35m (173.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "tags_users" ("tag_id", "user_id") VALUES (?, ?)  [["tag_id", 3], ["user_id", 1]]
+  [1m[36m (162.1ms)[0m  [1mcommit transaction[0m
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "tags_users" ON "tags"."id" = "tags_users"."tag_id" WHERE "tags_users"."user_id" = ?  [["user_id", 1]]
