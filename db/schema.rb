@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20140508131819) do
   add_index "urls", ["menu_id"], name: "index_urls_on_menu_id"
 
   create_table "users", force: true do |t|
-    t.string   "name"
+    t.string   "user"
     t.string   "password_digest"
     t.string   "email"
     t.datetime "created_at"
