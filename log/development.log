@@ -19487,3 +19487,48 @@ Completed 200 OK in 13ms (Views: 8.5ms | ActiveRecord: 0.4ms)
   [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
   [1m[35mTag Exists (0.3ms)[0m  SELECT  1 AS one FROM "tags"  WHERE "tags"."content" = 'Kana' LIMIT 1
   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+
+
+Started GET "/users/tags" for 127.0.0.1 at 2014-05-09 13:46:08 +0300
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"tags"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 9ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=tags):
+  app/controllers/users_controller.rb:71:in `set_user'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.0ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (17.7ms)
+
+
+Started GET "/users/tags.json" for 127.0.0.1 at 2014-05-09 13:46:13 +0300
+Processing by UsersController#show as JSON
+  Parameters: {"id"=>"tags"}
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users"  WHERE "users"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=tags):
+  app/controllers/users_controller.rb:71:in `set_user'
+
+
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.8ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/actionpack-4.1.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (16.8ms)
+
+
+Started GET "/tags.json" for 127.0.0.1 at 2014-05-09 13:46:23 +0300
+Processing by TagsController#index as JSON
+  [1m[36mTag Load (0.2ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+  Rendered tags/index.json.jbuilder (5.6ms)
+Completed 200 OK in 18ms (Views: 8.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-05-09 14:04:45 +0300
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /home/fleuri/.rbenv/versions/2.1.0/lib/ruby/gems/2.1.0/gems/railties-4.1.0/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms)

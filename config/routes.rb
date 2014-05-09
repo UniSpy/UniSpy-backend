@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sessions
+  resources :sessions, only: [:new, :create]
 
   post 'session', to: 'sessions#create'
   delete 'session', to: 'sessions#destroy'
